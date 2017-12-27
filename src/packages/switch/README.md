@@ -1,7 +1,9 @@
 
-  参数：
+  # 参数：
 
-  属性  描述  默认值  允许的数据类型
+  # 属性  描述  默认值  允许的数据类型
+
+  ``` bash
 
   value  可以在外部绑定的值  true  string,number,boolean
 
@@ -17,10 +19,16 @@
 
   unSelectedColor  未选择状态对应的背景色  rgba(188,188,188,0.6)  string
 
-  事件：
+  ```
 
-  事件名  描述  可用的参数
+  # 事件：
+
+  # 事件名  描述  可用的参数
+
+  ``` bash
 
   changeStart  改变前的回调  初始状态的值
 
   changeEnd  改变后的回调  结束状态的值
+  
+  ```

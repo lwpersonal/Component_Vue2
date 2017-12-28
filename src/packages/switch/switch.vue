@@ -28,7 +28,7 @@
 <template>
   <section
   class="switch-box"
-  :style="switchBoxSty"
+  :style="[switchBoxSty, {cursor: disabled ? 'not-allowed' : 'pointer'}]"
   @click="disabled ? null :_tapSwitch(value)">
 
     <!-- 背景 -->
@@ -45,7 +45,7 @@
     :style="switchBtnPosit">
       <!-- 禁用时显示加载动画 -->
       <svg class="loading" 
-      v-if="disabled"
+      v-if="loading && disabled"
       style="transform: scale(0.7)"
       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" :width="size" :height="size" :fill="selectedColor">
         <circle cx="16" cy="3" r="0">
@@ -88,7 +88,7 @@
 
 <script>
 export default {
-  name: 'module',
+  name: 'lw-switch',
   data () {
     return {
     }
@@ -100,6 +100,11 @@ export default {
       // 是否禁用，显示loading等待动画
       type: Boolean,
       default: false
+    },
+    loading: {
+      // 是否在禁用时显示动画
+      type: Boolean,
+      default: true
     },
     value: {
       // 绑定的值
@@ -134,11 +139,12 @@ export default {
   },
   methods: {
     _tapSwitch(value) {
-      // 点击开始changeStart事件，返回开始时的状态
-      const unValue = value === this.selectedVal ? value = this.unSelectedVal : value = this.selectedVal
-
-      this.$emit('changeStart', value)
-      this._changeValue(unValue)
+      if(value === this.selectedVal) {
+        this.$emit('changeStart', this.selectedVal)
+        this._changeValue(this.unSelectedVal)
+      } else {
+        this.$emit('changeStart', this.unSelectedVal)
+        this._changeValue(this.selectedVal) }
     },
     _changeValue(value) {
       // 点击结束changeEnd事件，返回点击后的状态
@@ -157,7 +163,7 @@ export default {
       }
     },
     switchBtnPosit() {
-      // 滑块按钮的位置样式
+      // 滑块按钮的大小和位置样式
       const translateX = this.value === this.selectedVal ? "100%" : "0"
 
       return {

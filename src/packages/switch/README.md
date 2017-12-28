@@ -5,7 +5,8 @@
   | 参数 | 说明 | 默认值 | 类型 |
 -|-|-|-
   value | 可以在外部绑定的值 | true | string,number,boolean
-  disabled | 是否禁用，禁用状态会有loading动画 | false | boolean
+  disabled | 是否禁用，禁用状态可配置loading动画 | false | boolean
+  loading | 是否在禁用时显示loading动画 | true | boolean
   size | 组件尺寸(px为单位) | 20 | number
   selectedVal | 选择状态对应的值 | true | string,number,boolean
   unSelectedVal | 未选择状态对应的值 | false | string,number,boolean

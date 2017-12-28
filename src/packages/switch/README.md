@@ -10,8 +10,8 @@
   size | 组件尺寸(px为单位) | 20 | number
   selectedVal | 选择状态对应的值 | true | string,number,boolean
   unSelectedVal | 未选择状态对应的值 | false | string,number,boolean
-  selectedColor | 选择状态对应的背景色 | rgba(40,164,186,1) | string
-  unSelectedColor | 未选择状态对应的背景色 | rgba(188,188,188,0.6) | string
+  selectedColor | 选择状态对应的背景色 | #28a4ba | string
+  unSelectedColor | 未选择状态对应的背景色 | #d0d1d2 | string
 
   ## 事件：
 

@@ -129,12 +129,12 @@ export default {
     selectedColor: {
       // 选择后的背景颜色
       type: String,
-      default: 'rgba(40,164,186,1)'
+      default: '#28a4ba'
     },
     unSelectedColor: {
       // 未选择后的背景颜色
       type: String,
-      default: 'rgba(188,188,188,0.6)'
+      default: '#d0d1d2'
     }
   },
   methods: {

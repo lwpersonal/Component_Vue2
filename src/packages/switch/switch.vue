@@ -47,7 +47,7 @@
       <svg class="loading" 
       v-if="disabled"
       style="transform: scale(0.7)"
-      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" :width="size" :height="size" fill="rgba(40,164,186,1)">
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" :width="size" :height="size" :fill="selectedColor">
         <circle cx="16" cy="3" r="0">
           <animate attributeName="r" values="0;3;0;0" dur="1s" repeatCount="indefinite" begin="0" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" calcMode="spline" />
         </circle>
@@ -109,7 +109,7 @@ export default {
     size: {
       // 组件尺寸
       type: Number,
-      default: 30
+      default: 20
     },
     selectedVal: {
       // 选择后的值

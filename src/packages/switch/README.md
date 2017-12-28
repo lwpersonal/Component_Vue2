@@ -1,9 +1,8 @@
 
   ## 参数：
 
-  属性  描述  默认值  允许的数据类型
   
-  | 参数 | 说明 | 类型 | 默认值 |
+  | 参数 | 说明 | 默认值 | 类型 |
 -|-|-|-
   value | 可以在外部绑定的值 | true | string,number,boolean
   disabled | 是否禁用，禁用状态会有loading动画 | false | boolean

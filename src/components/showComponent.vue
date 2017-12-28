@@ -10,8 +10,8 @@
     :disabled="disable"
     selectedVal="yes"
     unSelectedVal="no"
-    @changeStart="ch"
-    @changeEnd="change"/>
+    @changeStart="changeStart"
+    @changeEnd="changeEnd"/>
   </section>
 </template>
 
@@ -29,11 +29,11 @@ export default {
     'my-switch': Switch
   },
   methods: {
-    ch(val) {
+    changeStart(val) {
       this.disable = true
       console.log(val)
     },
-    change(val) {
+    changeEnd(val) {
       console.log('this.val: ' + val)
       setTimeout(() => { this.disable = false }, 2000)
     }

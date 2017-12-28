@@ -18,3 +18,44 @@
   -|-|-
   | changeStart | 改变前的回调 | 初始状态的值 |
   | changeEnd | 改变后的回调 | 结束状态的值 |
+
+  ## 用法：
+
+  ```
+  <template>
+    <my-switch 
+    v-model="val" 
+    :disabled="disable"
+    selectedVal="yes"
+    unSelectedVal="no"
+    @changeStart="changeStart"
+    @changeEnd="changeEnd"/>
+  </template>
+
+  <script>
+  import Switch from '../packages/switch/switch'
+  export default {
+    name: 'module',
+    data () {
+      return {
+        val: false,
+        disable: false,
+      }
+    },
+    components: {
+      'my-switch': Switch
+    },
+    methods: {
+      changeStart(val) {
+        this.disable = true
+        console.log(val)
+      },
+      changeEnd(val) {
+        console.log('this.val: ' + val)
+        setTimeout(() => { this.disable = false }, 2000)
+      }
+    }
+  }
+  </script>
+
+```

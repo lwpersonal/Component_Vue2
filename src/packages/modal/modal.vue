@@ -86,6 +86,7 @@
   
 </template>
 
+
 <script>
 export default {
   name: 'modal',

@@ -1,9 +1,9 @@
 
 <style scoped>
 .wrap {
-  width: 50%;
   height: 1000px;
-  min-width: 600px;
+  width: 90%;
+  max-width: 600px;
   margin: 0 auto;
   font-size: 14px;
 }
@@ -54,7 +54,6 @@
 
 <template>
   <section class="wrap">
-    
     <!-- Modal -->
     <section class="box-sty">
       <p class="title">modal组件</p>

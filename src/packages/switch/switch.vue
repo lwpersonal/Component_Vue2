@@ -1,5 +1,7 @@
 <style scoped>
 .switch-box {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
   transition: .5s all ease;
   position: relative;
   padding: 1px;
@@ -28,7 +30,7 @@
 <template>
   <section
   class="switch-box"
-  :style="[switchBoxSty, {cursor: disabled ? 'not-allowed' : 'pointer'}]"
+  :style="'wrap' | switchBoxSty(disabled, size, getBg())"
   @click="disabled ? null :_tapSwitch(value)">
 
     <!-- 背景 -->
@@ -36,7 +38,7 @@
       <div 
       v-if="value !== this.selectedVal"
       class="switch-bk"
-      :style="[switchBoxSty, {background: '#fff'}]"></div>
+      :style="'bg' | switchBoxSty(disabled, size, '#fff')"></div>
     </transition>
     
     <!-- 滑块按钮 -->
@@ -93,8 +95,6 @@ export default {
     return {
     }
   },
-  filters: {
-  },
   props: {
     disabled: {
       // 是否禁用，显示loading等待动画
@@ -137,7 +137,31 @@ export default {
       default: '#d0d1d2'
     }
   },
+  filters: {
+    switchBoxSty: (type, disabled, size, bg) => {
+      let wid, hei
+
+      if(type === 'wrap') {
+        wid = 2 * size + 'px'
+        hei = size + 'px'
+      } else if(type === 'bg') {
+        wid = (2 * size - 2)+ 'px'
+        hei = (size - 2) + 'px'
+      }
+      return {
+        width: wid,
+        height: hei,
+        borderRadius: size / 2 + 'px',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        background: bg
+      }
+    }
+  },
+  
   methods: {
+    getBg() {
+      return this.value === this.selectedVal ? this.selectedColor : this.unSelectedColor
+    },
     _tapSwitch(value) {
       if(value === this.selectedVal) {
         this.$emit('changeStart', this.selectedVal)
@@ -153,22 +177,14 @@ export default {
     }
   },
   computed: {
-    switchBoxSty() {
-      // 滑块整体样式
-      return {
-        width: 2 * this.size + 'px',
-        height: this.size + 'px',
-        borderRadius: this.size / 2 + 'px',
-        background: this.value === this.selectedVal ? this.selectedColor : this.unSelectedColor
-      }
-    },
     switchBtnPosit() {
       // 滑块按钮的大小和位置样式
-      const translateX = this.value === this.selectedVal ? "100%" : "0"
+      const switchWid = (this.size * 2) - this.size
+      const translateX = this.value === this.selectedVal ? switchWid + 'px' : '0'
 
       return {
-        width: this.size + 'px',
-        height: this.size + 'px',
+        width: (this.size - 2) + 'px',
+        height: (this.size - 2) + 'px',
         transform: 'translate(' + translateX + ', 0)'
       }
     }

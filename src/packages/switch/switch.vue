@@ -46,10 +46,10 @@
     class="switch-btn"
     :style="switchBtnPosit">
       <!-- 禁用时显示加载动画 -->
-      <svg class="loading" 
+      <svg class="loading"
       v-if="loading && disabled"
       style="transform: scale(0.7)"
-      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" :width="size" :height="size" :fill="selectedColor">
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" :width="size - 2" :height="size - 2" :fill="selectedColor">
         <circle cx="16" cy="3" r="0">
           <animate attributeName="r" values="0;3;0;0" dur="1s" repeatCount="indefinite" begin="0" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" calcMode="spline" />
         </circle>
